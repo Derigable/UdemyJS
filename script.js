@@ -16,4 +16,4 @@ for (let i = 0; i < 2; i++) {
     appData.expenses[prompt("Введите обязательную статью расходов в этом месяце")] = prompt("Во сколько обойдется?");
 }
 
-//console.log(appData);
+alert(`Ваш бюджет на 1 день = ${appData.money / 30}`);
