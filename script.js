@@ -6,13 +6,14 @@ let time = prompt("Введите дату в формате YYYY-MM-DD");
 let appData = {
     money: money,
     timeData: time,
-    expenses: {
-
-    },
+    expenses: {},
     optionalExpenses: {},
     income: [],
     savings: false
 };
 
-console.log(appData);
-console.log(appData.savings);
+for (let i = 0; i < 2; i++) {
+    appData.expenses[prompt("Введите обязательную статью расходов в этом месяце")] = prompt("Во сколько обойдется?");
+}
+
+//console.log(appData);
