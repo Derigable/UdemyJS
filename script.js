@@ -38,9 +38,12 @@ function chooseExpenses() {
  
 chooseExpenses();
 
-appData.moneyPerDay = (appData.budget / 30).toFixed();
+function detectDayBudget() {
+    appData.moneyPerDay = (appData.budget / 30).toFixed();
+    alert(`Ваш бюджет на 1 день = ${appData.moneyPerDay}`);
+}
 
-alert(`Ваш бюджет на 1 день = ${appData.moneyPerDay}`);
+detectDayBudget();
 
 if (appData.moneyPerDay < 100) {
     console.log("Минимальный уровень достатка");
