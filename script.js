@@ -1,7 +1,17 @@
 'use strict';
 
-let money = +prompt("Ваш бюджет на месяц?");
-let time = prompt("Введите дату в формате YYYY-MM-DD");
+let money, time;
+
+function start() {
+    money = +prompt("Ваш бюджет на месяц?", '');
+    time = prompt("Введите дату в формате YYYY-MM-DD", '');
+
+    while(isNaN(money) || money == "" || money == null) {
+        money = +prompt("Ваш бюджет на месяц?", '');
+    }
+}
+
+start();
 
 let appData = {
     budget: money,
@@ -9,57 +19,26 @@ let appData = {
     expenses: {},
     optionalExpenses: {},
     income: [],
-    savings: false
+    savings: true
 };
 
-for (let i = 0; i < 2; i++) {
-    let firstAnswer = prompt("Введите обязательную статью расходов в этом месяце", '');
-    let secondAnswer = +prompt("Во сколько обойдется?", '');
-    
-    if ((typeof(firstAnswer)) != null && (typeof(secondAnswer) != null) &&   firstAnswer != '' && secondAnswer != '' && firstAnswer.length < 50) {
-        appData.expenses[firstAnswer] = secondAnswer;
-    } else {
-        alert("Вы неправильно ввели ответы, попробуйте еще раз");
-        i--;
-    }
-} 
-
-/* второй вариант цикла через while
-
-let i = 0;
-while (i < 2) {
-    let firstAnswer = prompt("Введите обязательную статью расходов в этом месяце", '');
-    let secondAnswer = +prompt("Во сколько обойдется?", '');
-
-    if ((typeof(firstAnswer)) != null && (typeof(secondAnswer) != null) &&   firstAnswer != '' && secondAnswer != '' && firstAnswer.length < 50) {
-        appData.expenses[firstAnswer] = secondAnswer;
-        i++;
-    } else {
-        alert("Вы неправильно ввели ответы, попробуйте еще раз");
-        i--;
+function chooseExpenses() {
+    for (let i = 0; i < 2; i++) {
+        let firstAnswer = prompt("Введите обязательную статью расходов в этом месяце", '');
+        let secondAnswer = +prompt("Во сколько обойдется?", '');
+        
+        if ((typeof(firstAnswer)) != null && (typeof(secondAnswer) != null) &&   firstAnswer != '' && secondAnswer != '' && firstAnswer.length < 50) {
+            appData.expenses[firstAnswer] = secondAnswer;
+        } else {
+            alert("Вы неправильно ввели ответы, попробуйте еще раз");
+            i--;
+        }
     }
 }
-*/
+ 
+chooseExpenses();
 
-/* третий вариант цикла через do ... while 
-
-let i = 0;
-do {
-    let firstAnswer = prompt("Введите обязательную статью расходов в этом месяце", '');
-    let secondAnswer = +prompt("Во сколько обойдется?", '');
-
-    if ((typeof(firstAnswer)) != null && (typeof(secondAnswer) != null) &&   firstAnswer != '' && secondAnswer != '' && firstAnswer.length < 50) {
-        appData.expenses[firstAnswer] = secondAnswer;
-        i++;
-    } else {
-        alert("Вы неправильно ввели ответы, попробуйте еще раз");
-    }
-
-} while (i < 2);
-*/
-
-
-appData.moneyPerDay = appData.budget / 30;
+appData.moneyPerDay = (appData.budget / 30).toFixed();
 
 alert(`Ваш бюджет на 1 день = ${appData.moneyPerDay}`);
 
@@ -72,3 +51,17 @@ if (appData.moneyPerDay < 100) {
 } else {
     console.log("Произошла ошибка");
 }
+
+function checkSavings() {
+    if (appData.savings == true) {
+        let save = +prompt("Какова сумма накоплений?");
+        let percent = +prompt("Под какой процент?");
+
+        appData.monthIncome = (save/100/12*percent).toFixed();
+        alert(`Доход в месяц с вашего депозита: ${appData.monthIncome}`);
+    }
+}
+
+checkSavings();
+
+//console.log(appData);
