@@ -38,6 +38,21 @@ function chooseExpenses() {
  
 chooseExpenses();
 
+function chooseOptExpenses() {
+    for (let i = 0; i < 3; i++) {
+        let optExpensesAnswer = prompt("Статья необязательных расходов?");
+
+        if ((typeof(optExpensesAnswer)) != null && optExpensesAnswer != "" && optExpensesAnswer.length < 50) {
+            appData.optionalExpenses[i + 1] = optExpensesAnswer;
+        } else {
+            alert("Вы неправильно ввели ответ, попробуйте еще раз");
+            i--;
+        }
+    }
+}
+
+chooseOptExpenses();
+
 function detectDayBudget() {
     appData.moneyPerDay = (appData.budget / 30).toFixed();
     alert(`Ваш бюджет на 1 день = ${appData.moneyPerDay}`);
