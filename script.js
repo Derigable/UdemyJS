@@ -69,13 +69,6 @@ let appData = {
             alert(`Доход в месяц с вашего депозита: ${appData.monthIncome}`);
         }
     },
-
-    // Ввести в дополнительных доходах (chooseIncome) только строку
-
-    // ·        Не может оставить строку пустой
-
-    // ·        Не может отменить вопрос
-
     chooseIncome: function () {
         let items;
         let additionalItem;
@@ -100,6 +93,10 @@ let appData = {
         }
 
         appData.income.sort();
+
+        appData.income.forEach(function(item, index) {
+            alert(`Способы доп. заработка: ${index + 1}) ${item}`);
+        })
     }
 };
 
