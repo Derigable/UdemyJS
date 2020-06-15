@@ -100,4 +100,9 @@ let appData = {
     }
 };
 
+console.log(`Наша программа включает в себя данные:`);
+for (let data in appData) {
+    console.log(`${data}`);
+}
+
 //console.log(appData);
