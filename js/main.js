@@ -1,16 +1,40 @@
 'use strict';
 
-let money, time;
+let startButton = document.querySelector('#start'),
+    budgetValue = document.querySelector('.budget-value'),
+    daybudgetValue = document.querySelector('.daybudget-value'),
+    levelValue = document.querySelector('.level-value'),
+    expensesValue = document.querySelector('.expenses-value'),
+    optionalexpensesValue = document.querySelector('.optionalexpenses-value'),
+    incomeValue = document.querySelector('.income-value'),
+    monthSavingsValue = document.querySelector('.monthsavings-value'),
+    yearSavingsValue = document.querySelector('.yearsavings-value'),
+    expensesItems = document.querySelectorAll('.expenses-item'),
+    expensesBtn = document.getElementsByTagName('button')[0],
+    optionalExpensesBtn = document.getElementsByTagName('button')[1],
+    countBtn = document.getElementsByTagName('button')[2],
+    optionalExpensesItem = document.querySelectorAll('.optionalexpenses-item'),
+    incomeItem = document.querySelector('#income'),
+    checkSavings = document.querySelector('#savings'),
+    sumValue = document.querySelector('#sum'),
+    percentValue = document.querySelector('#percent'),
+    yearValue = document.querySelector('.year-value'),
+    monthValue = document.querySelector('.month-value'),
+    dayValue = document.querySelector('.day-value');
 
-function start() {
-    money = +prompt("Ваш бюджет на месяц?", '');
-    time = prompt("Введите дату в формате YYYY-MM-DD", '');
+    'use strict';
 
-    while (isNaN(money) || money == "" || money == null) {
+    let money, time;
+    
+    function start() {
         money = +prompt("Ваш бюджет на месяц?", '');
+        time = prompt("Введите дату в формате YYYY-MM-DD", '');
+    
+        while (isNaN(money) || money == "" || money == null) {
+            money = +prompt("Ваш бюджет на месяц?", '');
+        }
     }
-}
-
+    
 start();
 
 let appData = {
