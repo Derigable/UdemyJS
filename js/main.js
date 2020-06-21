@@ -73,8 +73,8 @@ optionalExpensesBtn.addEventListener('click', function() {
 });
 
 countBtn.addEventListener('click', function() {
-    if (appData.budget != undefined) {
-        appData.moneyPerDay = (appData.budget / 30).toFixed();
+    if (appData.budget != undefined && expensesValue.textContent != '') {
+        appData.moneyPerDay = ((appData.budget - +expensesValue.textContent) / 30).toFixed();
         dayBudgetValue.textContent = appData.moneyPerDay;
 
         if (appData.moneyPerDay < 100) {
